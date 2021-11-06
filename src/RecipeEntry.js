@@ -1,5 +1,3 @@
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {Service} from './Service'
 import React, { useState } from 'react';
 import AddIngredient from "./AddIngredient";
 import Time from "./Time";
@@ -30,15 +28,6 @@ export default function RecipeEntry(props) {
         props.func(recipe);
       }
       
-
-      let obj = {
-        name: recipe.name,  
-        source: recipe.source,
-        instructions: recipe.instructions
-    }
-
-    Service.addRecipe(obj);
-    console.log('service.recipes', Service.recipes);
     };
     const handleRecipeNameInputChange = (event) => {
       setRecipe({...recipe, name: event.target.value})
@@ -46,9 +35,9 @@ export default function RecipeEntry(props) {
     const handleRecipeSourceInputChange = (event) => {
       setRecipe({...recipe, source: event.target.value})
     };
-    const handleIngridientsInputChange = (event) => {
-      setRecipe({...recipe, ingridients: event.target.value})
-    };
+    // const handleIngridientsInputChange = (event) => {
+    //   setRecipe({...recipe, ingridients: event.target.value})
+    // };
     const handlePreparationTimeInputChange = (event) => {
       setRecipe({...recipe, time: event.target.value})
     };
@@ -65,22 +54,14 @@ export default function RecipeEntry(props) {
 
         <input 
           onChange={handleRecipeNameInputChange}
-          value={recipe.recipeName}
-          id="recipe-name"
           className="form-field"
-          type="text"
           placeholder="Recipe Name"
-          name="recipeName"
         />
         
         <input 
           onChange={handleRecipeSourceInputChange}
-          value={recipe.recipeSource}
-          id="recipe-source"
           className="form-field"
-          type="text"
           placeholder="Recipe Source"
-          name="recipeSource"
         />
         
         <ul>
@@ -95,22 +76,14 @@ export default function RecipeEntry(props) {
         <Time func={(time) => handlePreparationTimeInputChange}/>
         <input 
           onChange={handlePreparationTimeInputChange}
-          value={recipe.preparationTime}
-          id="preparation-time"
           className="form-field"
-          type="text"
           placeholder="Preparation time"
-          name="preparationTime"
         />
         
         <input 
           onChange={handlePreparationInstructionsInputChange}
-          value={recipe.preparationInstructions}
-          id="preparation-instructions"
           className="form-field"
-          type="text"
           placeholder="Preparation instructions"
-          name="preparationInstructions"
         />
 
         <br></br>

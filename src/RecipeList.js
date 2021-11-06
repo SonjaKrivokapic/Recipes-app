@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import RecipeEntry from './RecipeEntry';
 import RecipeDetails from './RecipeDetails';
 import {Service} from './Service';
@@ -14,7 +13,8 @@ function parseIngredients(ing){
   if(ing.length > 3){
     res += '...';
   }
-  return res;
+  return res;  
+  
 }
 
 function parseInstrucions(text){
@@ -24,7 +24,7 @@ function parseInstrucions(text){
     let li = res.lastIndexOf(" ");
     return res.substring(0, li) + '...';
   }else{
-    return text;
+    return text; 
   }
 }
 
